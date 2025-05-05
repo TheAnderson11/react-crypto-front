@@ -35,14 +35,20 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
       }
     } else if (location.pathname === '/register') {
       if (password === reapetPassword) {
-        const userData = {
-          firstName,
-          userName,
-          email,
-          password,
-        };
-        const user = await instance.post('/auth/register', userData);
-        console.log(user);
+        try {
+          const userData = {
+            firstName,
+            userName,
+            email,
+            password,
+          };
+          const newUser = await instance.post('/auth/register', userData);
+          dispatch(login(newUser.data));
+          navigate('/');
+        } catch (error) {
+          console.log(error);
+          return error;
+        }
       } else {
         throw new Error(AppErrors.PASSWORD_NOT_MATCH);
       }
