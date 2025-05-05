@@ -11,7 +11,7 @@ const initialState: IAuthState = {
     updatedAt: '',
     watchlist: [],
   },
-  isLogged: false,
+  isLogged: true,
 };
 
 export const authSlice = createSlice({
