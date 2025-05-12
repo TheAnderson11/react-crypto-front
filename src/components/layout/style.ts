@@ -7,7 +7,7 @@ export const useStyles = (isNonMobile: boolean) => ({
   },
   layoutItems: {
     display: 'flex',
-    width: isNonMobile ? 'calc(100% - 250px)' : '100%',
+    flexGrow: 1,
     flexDirection: 'column',
     justifyContent: 'center',
   },
