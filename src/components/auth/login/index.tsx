@@ -1,8 +1,7 @@
 import { Button, TextField, Typography } from '@mui/material';
-import React, { JSX } from 'react';
 import { IPropsLogin } from '../../../common/types/auth';
 
-const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
+const LoginPage = (props: IPropsLogin) => {
   const { setEmail, setPassword, navigate } = props;
   return (
     <>

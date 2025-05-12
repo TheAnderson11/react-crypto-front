@@ -1,5 +1,5 @@
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import Home from './components/home';
+import { Outlet } from 'react-router-dom';
 import LayoutComponent from './components/layout';
 import { ColorModeContext, useMode } from './theme';
 
@@ -12,7 +12,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <LayoutComponent>
-            <Home />
+            <Outlet />
           </LayoutComponent>
         </ThemeProvider>
       </ColorModeContext.Provider>
