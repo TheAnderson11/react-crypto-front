@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import { JSX, useState } from 'react';
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AppErrors } from '../../common/errors';
 import { login } from '../../store/slice/auth';
@@ -9,7 +9,7 @@ import LoginPage from './login';
 import RegisterPage from './register';
 import './style.scss';
 
-const AuthRootComponent: React.FC = (): JSX.Element => {
+const AuthRootComponent = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [reapetPassword, setRepeatPassword] = useState('');
