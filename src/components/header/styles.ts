@@ -4,13 +4,18 @@ type Colors = ReturnType<typeof tokens>;
 
 export const useStyles = (colors: Colors) => ({
   root: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '32px 24px',
-    backgroundColor: colors.primary.DEFAULT,
+    position: 'static',
+    background: `${colors.primary.DEFAULT} !important`,
     borderBottom: `1px solid ${colors.borderColor}`,
-    maxHeight: '95px',
+    boxShadow: 'none',
+  },
+  toolbar: {
+    justifyContent: 'space-between',
+    padding: '25px 45px',
+  },
+  menuIcon: {
+    marginRight: '10px',
+    cursor: 'pointer',
   },
   iconPosition: {
     paddingRight: '37px',
@@ -19,6 +24,7 @@ export const useStyles = (colors: Colors) => ({
   themeIcon: { marginRight: '45px' },
   searchRoot: {
     display: 'flex',
+    maxHeight: '45px',
     marginLeft: '28px',
     borderRadius: '9px',
     backgroundColor: colors.primary[600],
