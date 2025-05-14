@@ -1,8 +1,8 @@
 import { Button, TextField, Typography } from '@mui/material';
-import { IPropsLogin } from '../../../common/types/auth';
+import { IPropsAuth } from '../../../common/types/auth';
 
-const LoginPage = (props: IPropsLogin) => {
-  const { setEmail, setPassword, navigate } = props;
+const LoginPage = (props: IPropsAuth) => {
+  const { navigate, register, errors } = props;
   return (
     <>
       <Typography variant="h2" fontFamily="Poppins" textAlign={'center'}>
@@ -15,18 +15,22 @@ const LoginPage = (props: IPropsLogin) => {
         fullWidth={true}
         margin="normal"
         label="E-mail"
-        onChange={e => setEmail(e.target.value)}
         variant="outlined"
         placeholder="write your email address"
+        helperText={errors.email ? `${errors.email.message}` : ''}
+        error={!!errors.email}
+        {...register('email')}
       />
       <TextField
         fullWidth={true}
         margin="normal"
         label="Password"
-        onChange={e => setPassword(e.target.value)}
         variant="outlined"
         type="password"
         placeholder="write your password"
+        helperText={errors.password ? `${errors.password.message}` : ''}
+        error={!!errors.password}
+        {...register('password')}
       />
       <Button
         variant="contained"
