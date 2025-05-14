@@ -1,15 +1,23 @@
+import { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { NavigateFunction } from 'react-router-dom';
+
 export type Setter = (value: string) => void;
 
-export interface IPropsLogin {
-  setEmail: Setter;
-  setPassword: Setter;
-  navigate: Setter;
+export interface IPropsAuth {
+  navigate: NavigateFunction;
+  register: UseFormRegister<ILoginForm | IRegisterForm>;
+  errors: FieldErrors<IRegisterForm>;
 }
 
-export interface IPropsRegister extends IPropsLogin {
-  setRepeatPassword: Setter;
-  setFirstName: Setter;
-  setUserName: Setter;
+export interface ILoginForm {
+  email: string;
+  password: string;
+}
+
+export interface IRegisterForm extends ILoginForm {
+  firstName: string;
+  userName: string;
+  repeatPassword: string;
 }
 
 export interface IAuthState {
