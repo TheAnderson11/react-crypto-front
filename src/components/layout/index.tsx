@@ -1,7 +1,7 @@
 import { ChevronLeftOutlined } from '@mui/icons-material';
 import { Box, IconButton, useMediaQuery } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { ILayout } from '../../common/types/layout';
+import { ILayout } from '../../common/interfaces/layout';
 import HeaderComponent from '../header';
 import SideBarComponent from '../sidebar';
 import { useStyles } from './style';

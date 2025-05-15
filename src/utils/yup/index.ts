@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { ILoginForm, IRegisterForm } from '../../common/types/auth';
+import { ILoginForm, IRegisterForm } from '../../common/interfaces/auth';
 
 export const loginSchema: yup.ObjectSchema<ILoginForm> = yup.object().shape({
   email: yup.string().email('Невалидный email').required('Email обязателен'),

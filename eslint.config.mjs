@@ -10,6 +10,7 @@ export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
+    files: ['src/**/*.{js,ts,jsx,tsx}'],
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
@@ -18,16 +19,16 @@ export default [
       prettier: prettierPlugin,
     },
     rules: {
-      'react/react-in-jsx-scope': 'off', // не нужен import React с React 17+
-      'react/prop-types': 'off', // отключаем PropTypes, если используем TypeScript
-      'prettier/prettier': 'error', // Prettier ошибки = ESLint ошибки
-      'react-hooks/rules-of-hooks': 'error', // хуки на месте
-      'react-hooks/exhaustive-deps': 'warn', // зависимости хуков
-      'import/order': ['warn', { 'newlines-between': 'always' }], // красивые импорты
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'prettier/prettier': 'error',
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
+      'import/order': ['warn', { 'newlines-between': 'always' }],
     },
     settings: {
       react: {
-        version: 'detect', // автоматически определяет версию React
+        version: 'detect',
       },
     },
   },
