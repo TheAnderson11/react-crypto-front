@@ -10,14 +10,15 @@ import {
   useTheme,
 } from '@mui/material';
 import { useContext, useMemo } from 'react';
+import { IHeaderProps } from '../../common/interfaces/header';
 import { ColorModeContext, tokens } from '../../theme';
 import { useAppSelector } from '../../utils/hook';
 import FlexBetween from '../flex-between';
 import { useStyles } from './styles';
 
-const HeaderComponent = (props: any) => {
-  const { isOpen, setIsOpen } = props;
+const HeaderComponent = (props: IHeaderProps) => {
   const authState = useAppSelector(state => state.auth.user);
+  const { isOpen, setIsOpen } = props;
   const theme = useTheme();
   const colors = useMemo(() => tokens(theme.palette.mode), [theme.palette.mode]);
   const colorMode = useContext(ColorModeContext);

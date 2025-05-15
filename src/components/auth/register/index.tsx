@@ -1,8 +1,13 @@
-import { Button, TextField, Typography } from '@mui/material';
-import { IPropsAuth } from '../../../common/types/auth';
+import { Box, TextField, Typography, useTheme } from '@mui/material';
+import { useMemo } from 'react';
+import { IPropsAuth } from '../../../common/interfaces/auth';
+import { tokens } from '../../../theme';
+import AppButton from '../../app-button';
 
 const RegisterPage = (props: IPropsAuth) => {
   const { navigate, register, errors } = props;
+  const theme = useTheme();
+  const colors = useMemo(() => tokens(theme.palette.mode), [theme.palette.mode]);
   return (
     <>
       <Typography variant="h2" fontFamily="Poppins" textAlign={'center'}>
@@ -63,18 +68,22 @@ const RegisterPage = (props: IPropsAuth) => {
         error={!!errors.repeatPassword}
         {...register('repeatPassword')}
       />
-      <Button
-        variant="contained"
-        type="submit"
-        sx={{ fontFamily: 'Poppins', marginTop: 2, marginBottom: 2, width: '70%' }}
-      >
+      <AppButton variant="contained" type="submit">
         Registration
-      </Button>
+      </AppButton>
       <Typography variant="body1" sx={{ fontFamily: 'Poppins' }}>
         Do you have an account?
-        <span className="incitingText" onClick={() => navigate('/login')}>
+        <Box
+          component="span"
+          sx={{
+            color: colors.black[900],
+            marginLeft: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/login')}
+        >
           Authorization
-        </span>
+        </Box>
       </Typography>
     </>
   );

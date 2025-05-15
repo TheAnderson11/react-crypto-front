@@ -2,29 +2,31 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Box } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ILoginForm, IRegisterForm } from '../../common/types/auth';
+import { IPropsAuth } from '../../common/interfaces/auth';
 import { login } from '../../store/slice/auth';
 import { instance } from '../../utils/axios';
 import { useAppDispatch } from '../../utils/hook';
 import { loginSchema, registerSchema } from '../../utils/yup';
 import LoginPage from './login';
 import RegisterPage from './register';
-import './style.scss';
+import { useStyles } from './styles';
 
-const schema = location.pathname === '/login' ? loginSchema : registerSchema;
 const AuthRootComponent = () => {
+
+  const classes = useStyles();
   const location = useLocation();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const schema = location.pathname === '/login' ? loginSchema : registerSchema;
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<ILoginForm | IRegisterForm>({
+  } = useForm<IPropsAuth>({
     resolver: yupResolver(schema),
   });
 
-  const handleSubmitForm = async (data: any) => {
+  const handleSubmitForm = async (data: IPropsAuth) => {
     if (location.pathname === '/login') {
       try {
         const userData = {
@@ -57,27 +59,17 @@ const AuthRootComponent = () => {
   };
 
   return (
-    <div className="root">
-      <form className="form" onSubmit={handleSubmit(handleSubmitForm)}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          flexDirection="column"
-          max-width={640}
-          margin="auto"
-          padding={5}
-          borderRadius={5}
-          boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
-        >
+    <Box sx={classes.root}>
+      <Box sx={classes.form} component="form" onSubmit={handleSubmit(handleSubmitForm)}>
+        <Box sx={classes.description}>
           {location.pathname === '/login' ? (
             <LoginPage navigate={navigate} register={register} errors={errors} />
           ) : location.pathname === '/register' ? (
             <RegisterPage navigate={navigate} register={register} errors={errors} />
           ) : null}
         </Box>
-      </form>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

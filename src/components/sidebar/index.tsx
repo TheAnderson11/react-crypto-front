@@ -19,12 +19,13 @@ import {
 } from '@mui/material';
 import { useEffect, useMemo, useState } from 'react';
 import logo from '../../assets/images/sidebar/logo.svg';
+import { ISidebarProps } from '../../common/interfaces/sidebar';
 import { navMenu } from '../../common/moks/navigate';
 import { tokens } from '../../theme';
 import FlexBetween from '../flex-between';
 import { useStyles } from './styles';
 
-const SideBarComponent = ({ ...props }) => {
+const SideBarComponent = (props: ISidebarProps) => {
   const { drawerWidth, isOpen, setIsOpen } = props;
   const { pathname } = useLocation();
   const [active, setActive] = useState('');
@@ -70,8 +71,7 @@ const SideBarComponent = ({ ...props }) => {
                     onClick={() => navigate(`${items.path}`)}
                     sx={{
                       ...classes.navItem,
-                      backgroundColor: active === items.path ? colors.blue : '',
-                      color: active === items.path ? colors.white.DEFAULT : '',
+                      ...(active === items.path ? classes.navBarActiveLink : ''),
                       '& .MuiSvgIcon-root': {
                         color: active === items.path ? `${colors.white.DEFAULT} !important` : '',
                       },

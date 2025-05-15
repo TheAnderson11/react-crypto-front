@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App';
 import AuthRootComponent from './components/auth';
-import Home from './components/home';
-import NewsComponent from './components/news';
-import SettingsComponent from './components/settings';
-import WatchListComponent from './components/watchlist';
 import './index.css';
+import Home from './pages/home';
+import NewsComponent from './pages/news';
+import SettingsComponent from './pages/settings';
+import WatchListComponent from './pages/watchlist';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
 import PrivateRoute from './utils/router/privateRoute';
@@ -18,13 +18,13 @@ const router = createBrowserRouter([
     element: <PrivateRoute />,
     children: [
       {
-        path: '',
+        path: '/',
         element: <App />,
         children: [
-          { path: '', element: <Home /> },
-          { path: 'watchlist', element: <WatchListComponent /> },
-          { path: 'news', element: <NewsComponent /> },
-          { path: 'settings', element: <SettingsComponent /> },
+          { path: '/', element: <Home /> },
+          { path: '/watchlist', element: <WatchListComponent /> },
+          { path: '/news', element: <NewsComponent /> },
+          { path: '/settings', element: <SettingsComponent /> },
         ],
       },
     ],

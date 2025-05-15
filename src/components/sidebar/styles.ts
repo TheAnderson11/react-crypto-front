@@ -27,6 +27,12 @@ export const useStyles = (colors: Colors, drawerWidth: number) => ({
     },
   },
 
+  navBarActiveLink: {
+    backgroundColor: colors.blue,
+    color: colors.white.DEFAULT,
+    borderRadius: '4px',
+  },
+
   navBlock: {
     width: '100%',
     borderBottom: `1px solid ${colors.borderColor}`,
