@@ -10,8 +10,4 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-  resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
-  },
-  appType: 'spa',
 });
